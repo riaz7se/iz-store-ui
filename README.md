@@ -1,4 +1,5 @@
 # mystore-ui
 MyStore with Cart using Vite 
 
-### Usign react-redux, createStore
+### Using react-redux, createStore
+### Using react-toolkit
