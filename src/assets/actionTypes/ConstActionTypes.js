@@ -1,0 +1,9 @@
+
+export const CART_ADD_ITEM = "CART_ADD_ITEM";
+export const CART_DELETE_ITEM = "CART_DELETE_ITEM";
+export const CART_VIEW_ITEM = "CART_DELETE_ITEM";
+
+export const STORE_ADD_ITEM = "STORE_ADD_ITEM";
+export const STORE_DELETE_ITEM = "STORE_DELETE_ITEM";
+export const STORE_VIEW_ITEM = "STORE_DELETE_ITEM";
+
