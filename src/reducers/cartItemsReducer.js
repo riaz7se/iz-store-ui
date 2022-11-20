@@ -2,7 +2,7 @@ import {
   CART_ADD_ITEM,
   CART_DELETE_ITEM,
   CART_VIEW_ITEM,
-} from "../assets/actionTypes/ConstActionTypes";
+} from "../actionTypes/ConstActionTypes";
 
 const initialState = {
   cartItems: [],
@@ -11,7 +11,6 @@ const initialState = {
 export const cartItemsReducer = (state = initialState, action) => {
   switch (action.type) {
     case CART_ADD_ITEM:
-      console.log("action: ", action);
       return {
         cartItems: [
           ...state.cartItems,

@@ -1,7 +1,7 @@
 import {
   STORE_ADD_ITEM,
   STORE_VIEW_ITEM,
-} from "../assets/actionTypes/ConstActionTypes";
+} from "../actionTypes/ConstActionTypes";
 
 const initialState = {
   allItems: [

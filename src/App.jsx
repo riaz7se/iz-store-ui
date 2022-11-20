@@ -1,5 +1,4 @@
 import { Suspense, useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
 import Cart from "./components/Cart";
 import MyStore from "./components/MyStore";

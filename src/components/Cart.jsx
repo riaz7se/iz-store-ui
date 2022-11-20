@@ -1,13 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteItemToCart } from "../assets/actions/MyStoreActions";
+import { deleteItemToCart } from "../actions/MyStoreActions";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state).cartReducer;
   
   const itemsList = cart.cartItems.map((item, index) => {
-    console.log("cartItems: ", cart);
     return (
       <ul key={index}>
         <li>

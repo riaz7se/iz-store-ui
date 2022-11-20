@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItemToCart } from "../assets/actions/MyStoreActions";
+import { addItemToCart } from "../actions/MyStoreActions";
 
 const MyStore = () => {
   const dispatch =  useDispatch();
