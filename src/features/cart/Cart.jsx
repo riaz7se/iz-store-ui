@@ -16,7 +16,7 @@ const Cart = () => {
     return (
       <ul key={index}>
         <li>
-          {item.itemName} [{item.price}]
+          {item.title} [{item.price}]
           <button onClick={() => deleteItemFromCart(item)}>-</button>
         </li>
       </ul>

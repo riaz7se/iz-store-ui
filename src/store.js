@@ -2,17 +2,16 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import cartReducer from "./features/cart/cartSlice";
 import myStoreReducer from "./features/items/myStoreSlice";
-import thunk from 'redux-thunk';
+import thunk from "redux-thunk";
 import {
-    persistReducer,
-    FLUSH,
-    REHYDRATE,
-    PAUSE,
-    PERSIST,
-    PURGE,
-    REGISTER,
-} from 'redux-persist';
-
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
 
 // const persistConfig = {
 //     key: 'root',
@@ -34,25 +33,23 @@ import {
 //     }),
 // });
 
-
-
 /// other method to persist
 const reducers = combineReducers({
-    storeItems: myStoreReducer,
-    cart: cartReducer,
-  });
-  
-  const persistConfig = {
-    key: 'root',
-    storage,
-  };
-  
-  const persistedReducer = persistReducer(persistConfig, reducers);
-  
-  const store = configureStore({
-    reducer: persistedReducer,
-    devTools: process.env.NODE_ENV !== 'production',
-    middleware: [thunk],
-  });
+  storeItems: myStoreReducer,
+  cart: cartReducer,
+});
 
-  export default store;
+const persistConfig = {
+  key: "root",
+  storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, reducers);
+
+const store = configureStore({
+  reducer: reducers,
+  devTools: process.env.NODE_ENV !== "production",
+  middleware: [thunk],
+});
+
+export default store;

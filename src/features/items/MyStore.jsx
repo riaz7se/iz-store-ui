@@ -1,11 +1,21 @@
 import { nanoid } from "@reduxjs/toolkit";
-import React from "react";
+import React, { useRef } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cartItemAdd } from "../cart/cartSlice";
+import { fetchItems, fetchStoreItems } from "./myStoreSlice";
 
 const MyStore = () => {
+  const isFetchStoreItems = useRef(true);
   const dispatch =  useDispatch();
-  const storeItems = useSelector((state) => state.storeItems);
+  const {storeItems, loading} = useSelector((state) => state);
+
+  useEffect(() => {
+    if (isFetchStoreItems.current) {
+      isFetchStoreItems.current = false 
+      dispatch(fetchStoreItems);
+    }
+  }, []);
 
   const addItemToCart = (item) => {
     dispatch(
@@ -19,7 +29,7 @@ const MyStore = () => {
   const itemsList = storeItems.allItems.map((item, index) => {
     return (
       <ul key={index}>
-        <li>{item.itemName} [{item.price}]
+        <li>{item.title} [{item.price}]
             <button onClick={() => addItemToCart(item)}>
                 +
             </button>
