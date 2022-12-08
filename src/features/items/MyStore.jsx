@@ -3,17 +3,20 @@ import React, { useRef } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { cartItemAdd } from "../cart/cartSlice";
-import { fetchItems, fetchStoreItems } from "./myStoreSlice";
+import { allItems,  fetchItems, fetchStoreItems, loading } from "./myStoreSlice";
 
 const MyStore = () => {
   const isFetchStoreItems = useRef(true);
   const dispatch =  useDispatch();
-  const {storeItems, loading} = useSelector((state) => state);
+  // const {storeItems, loading} = useSelector((state) => state);
+
+  const storeItems = useSelector(allItems);
+  const isLoading = useSelector(loading)
 
   useEffect(() => {
     if (isFetchStoreItems.current) {
       isFetchStoreItems.current = false 
-      dispatch(fetchStoreItems);
+      dispatch(fetchStoreItems());
     }
   }, []);
 

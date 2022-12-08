@@ -35,7 +35,7 @@ export const fetchStoreItems = createAsyncThunk(
   "mystore/fetchStoreItems",
   async () => {
     const response = await axios.get("https://fakestoreapi.com/products/");
-    return  response.data
+    return response.data;
   }
 );
 
@@ -55,7 +55,7 @@ export const myStoreSlice = createSlice({
     [fetchStoreItems.fulfilled]: (state, action) => {
       console.log("fullfilled: ", action.payload);
       state.loading = false;
-      state.allItems.push(...action.payload)
+      state.allItems.push(...action.payload);
     },
     [fetchStoreItems.rejected]: (state) => {
       state.loading = false;
@@ -64,5 +64,10 @@ export const myStoreSlice = createSlice({
 });
 
 export const { storeItemsAdd } = myStoreSlice.actions;
+
+//state.<xxxx> . xxxx should match to store, reducer name
+export const allItems = (state) => state.storeItems;
+
+export const loading = (state) => state.storeItems;
 
 export default myStoreSlice.reducer;
