@@ -3,18 +3,27 @@ import reactLogo from './assets/react.svg'
 import './App.css'
 import Cart from './features/cart/Cart'
 import MyStore from './features/items/MyStore'
+import { useAuth0 } from '@auth0/auth0-react'
 
 function App() {
   const [count, setCount] = useState(0)
 
+  const {
+    loginWithPopup, 
+    loginWithRedirect,
+    logout,
+    user,
+    getAccessTokenSilently,
+  isAuthenticated} = useAuth0()
   return (
-    <div className="App">
+    isAuthenticated ? <div className="App">
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
         </a>
       </div>
       <h1>Izme Store</h1>
+      <h3>Logged in User: {user.name} {getAccessTokenSilently}</h3>
       <div className="my-store">
         <Suspense fallback={<h1>Loading Items...</h1>}>
           <MyStore />
@@ -37,6 +46,16 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </div>
+  : <div>
+     <button onClick={loginWithPopup}>
+      Login with Popup
+     </button>
+      
+      <button onClick={loginWithRedirect}>
+      Login with Redirect
+      </button>
+  </div>
+
   );
 }
 
